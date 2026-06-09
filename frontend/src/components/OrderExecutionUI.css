@@ -1,0 +1,160 @@
+/* OrderExecutionUI.css */
+
+.order-container {
+  padding: 0 16px; /* Use padding for spacing on small screens */
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.order-container h2 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--primary-text);
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 32px;
+}
+
+.stock-info, .risk-box {
+  background: var(--secondary-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 32px;
+}
+
+.stock-info p, .risk-box p {
+  margin: 12px 0;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1rem;
+  color: var(--secondary-text);
+}
+
+/* Updated selector for better JSX structure */
+.stock-info strong, .risk-box strong {
+  font-weight: 500;
+  color: var(--primary-text);
+}
+
+/* --- THIS IS THE FIX FOR THE COLLISION --- */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* Default to a single column */
+  gap: 20px; /* Adjust gap for single column layout */
+  margin-bottom: 32px;
+}
+
+/* Switch to two columns on screens wider than 768px */
+@media (min-width: 768px) {
+  .form-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px; /* Use a wider gap for two columns */
+  }
+}
+/* --- END OF FIX --- */
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--secondary-text);
+  margin-bottom: 8px;
+}
+
+.form-group select,
+.form-group input {
+  background-color: var(--primary-bg);
+  border: 1px solid var(--border-color);
+  color: var(--primary-text);
+  padding: 12px 14px;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.form-group select {
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='%2300d09c' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 10px top 50%;
+}
+
+.form-group select:focus,
+.form-group input:focus {
+  outline: none;
+  border-color: var(--primary-accent);
+  box-shadow: 0 0 0 3px rgba(0, 208, 156, 0.3);
+}
+
+.form-group .auto-value {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: var(--primary-accent);
+}
+
+.risk-box h4 {
+  color: var(--primary-text);
+  margin: 0 0 16px 0;
+}
+.risk-box .loss {
+  color: var(--negative-accent);
+}
+.risk-box .gain {
+  color: var(--primary-accent);
+}
+
+.order-status {
+    text-align: center;
+    margin-top: 20px;
+    font-weight: 500;
+    padding: 12px;
+    border-radius: 8px;
+}
+.order-status.success {
+  color: var(--primary-accent);
+  background-color: rgba(0, 208, 156, 0.1);
+}
+.order-status.error {
+  color: var(--negative-accent);
+  background-color: rgba(244, 67, 54, 0.1);
+}
+
+.submit-button {
+  width: 100%;
+  padding: 14px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--primary-text);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: 16px;
+  text-transform: uppercase;
+  background-color: #00b88a;
+}
+
+.submit-button.buy {
+  background-color: #00b88a;
+}
+.submit-button.buy:hover {
+  background-color: var(--primary-accent-hover);
+}
+
+.submit-button.sell {
+  background-color: var(--negative-accent);
+}
+.submit-button.sell:hover {
+  background-color: #d32f2f; /* Darker red on hover */
+}
+
+.submit-button:disabled {
+    background-color: #4a5568;
+    cursor: not-allowed;
+}

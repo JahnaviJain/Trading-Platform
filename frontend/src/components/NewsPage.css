@@ -1,0 +1,100 @@
+/* NewsPage.css */
+
+/* --- KEEP ALL YOUR EXISTING STYLES --- */
+
+.news-container h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 24px;
+  color: var(--primary-text);
+}
+
+.summary-box, .article-item {
+  background-color: var(--secondary-bg); /* Use a slightly lighter background for cards */
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin-bottom: 16px;
+}
+
+.summary-box h3 {
+  margin: 0 0 16px 0;
+  color: var(--primary-text);
+}
+
+.sentiment-counts {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 8px;
+}
+
+/* Sentiment Colors */
+.sentiment-bullish { color: var(--primary-accent); }
+.sentiment-bearish { color: var(--negative-accent); }
+.sentiment-neutral { color: var(--secondary-text); }
+
+.sentiment-bullish-border { border-left: 4px solid var(--primary-accent); }
+.sentiment-bearish-border { border-left: 4px solid var(--negative-accent); }
+.sentiment-neutral-border { border-left: 4px solid var(--secondary-text); }
+
+.article-title {
+  margin: 0 0 12px 0;
+  font-size: 1.1rem;
+  color: var(--primary-text);
+}
+
+.article-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.875rem;
+  color: var(--secondary-text);
+}
+
+.no-news-message {
+  text-align: center;
+  padding: 40px;
+  background-color: var(--secondary-bg);
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+/* --- ADD THESE NEW STYLES FOR THE MARQUEE EFFECT --- */
+
+/* 1. The container that hides the overflow and sets the visible area */
+.article-list-container {
+  height: 500px; /* Adjust this to control the visible height of your news feed */
+  overflow: hidden;
+  position: relative;
+  background-color: var(--primary-bg);
+  border-radius: 8px;
+}
+
+/* 2. The list that will be animated */
+.article-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  /* The animation is defined here */
+  animation-name: scroll-up;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+/* 3. Pause the animation when the user hovers over the container */
+.article-list-container:hover .article-list {
+  animation-play-state: paused;
+}
+
+
+/* 4. The keyframes that define the scrolling animation */
+@keyframes scroll-up {
+  from {
+    /* Starts at the top */
+    transform: translateY(0%);
+  }
+  to {
+    /* Moves upwards by the height of ONE of the duplicated lists */
+    transform: translateY(-50%);
+  }
+} 

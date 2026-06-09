@@ -1,0 +1,210 @@
+/* src/Portfolio.css */
+
+/* 1. DEFINE THE DARK THEME VARIABLES (No Changes) */
+:root {
+  --primary-bg: #0e1a2b;
+  --secondary-bg: #1a2a44;
+  --card-bg: #1e1e2f;
+  --primary-text: #ffffff;
+  --secondary-text: #a9c1e0;
+  --primary-accent: #00d09c;
+  --primary-accent-hover: #00b88a;
+  --negative-accent: #f44336;
+  --negative-accent-hover: #d32f2f;
+  --border-color: rgba(0, 208, 156, 0.2);
+  --font-family: 'Segoe UI', 'Roboto', sans-serif;
+}
+
+/* 2. GLOBAL AND WRAPPER STYLES (No Changes) */
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  background-color: var(--primary-bg);
+  color: var(--primary-text);
+}
+
+.portfolio_page_wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.loading_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 1.5rem;
+  color: var(--primary-accent);
+}
+
+/* 3. HEADER STYLES (No Changes) */
+.portfolio_header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  height: 65px;
+  background-color: var(--secondary-bg);
+  border-bottom: 1px solid var(--border-color);
+  flex-shrink: 0;
+}
+
+.trade-title { font-size: 1.5rem; font-weight: 700; color: var(--primary-text); }
+.trade-nav { display: flex; align-items: center; gap: 24px; }
+.trade-nav a { text-decoration: none; color: var(--primary-text); font-weight: 500; transition: color 0.2s; padding: 4px 8px; border-radius: 4px; }
+.trade-nav a:hover, .trade-nav a.active { color: var(--primary-accent); background-color: rgba(0, 208, 156, 0.1); }
+.welcome-message { color: var(--secondary-text); font-weight: 500; }
+.logout-button { background-color: transparent; color: var(--primary-accent); border: 1px solid var(--primary-accent); padding: 8px 16px; border-radius: 6px; cursor: pointer; font-weight: 600; transition: all 0.2s ease-in-out; }
+.logout-button:hover { background-color: var(--primary-accent); color: var(--primary-bg); border-color: var(--primary-accent); }
+
+
+/* 4. MAIN CONTENT AREA (No Changes) */
+.portfolio_content {
+  padding: 2rem;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* 5. SUMMARY & DOUGHNUT CHART SECTION (UPDATED) */
+.portfolio_summary_section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+    background-color: var(--secondary-bg);
+    padding: 2rem; /* Increased padding */
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    align-items: stretch; /* Align items to have same height */
+}
+
+/* Container for the three summary cards */
+.summary_cards_container {
+    flex: 1; /* Take 1 part of the space */
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    min-width: 250px;
+}
+.summary_card {
+    background-color: var(--card-bg);
+    padding: 1.25rem; /* Adjusted padding */
+    border-radius: 8px;
+    border-left: 5px solid var(--border-color);
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.summary_card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); }
+.summary_card h3 { margin: 0 0 0.5rem 0; font-size: 0.9rem; color: var(--secondary-text); font-weight: 500; }
+.summary_card p {
+    margin: 0;
+    font-size: 1.75rem; /* DECREASED FONT SIZE */
+    font-weight: 700;
+    color: var(--primary-text);
+}
+.summary_card.profit p { color: var(--primary-accent); }
+.summary_card.loss p { color: var(--negative-accent); }
+.summary_card.profit { border-left-color: var(--primary-accent); }
+.summary_card.loss { border-left-color: var(--negative-accent); }
+
+/* NEW: Container for both charts */
+.summary_charts_container {
+    flex: 2; /* Take 2 parts of the space */
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap; /* Allow charts to stack on smaller screens */
+    min-width: 400px;
+}
+
+/* Container for a single chart */
+.summary_chart_container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 250px; /* Adjusted height */
+    min-width: 280px;
+}
+
+.summary_chart_container h3 {
+    color: var(--primary-text);
+    margin-bottom: 1rem;
+    font-size: 1.1rem; /* Adjusted font size */
+    text-align: center;
+}
+
+.chart_container_doughnut {
+    position: relative;
+    height: 250px; /* Adjusted height */
+    width: 250px;   /* Adjusted width */
+}
+
+/* 6. DATA & TABLE SECTIONS (No Changes) */
+.data_section {
+  background-color: var(--secondary-bg);
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  border: 1px solid var(--border-color);
+}
+
+.section_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+.section_header h2 { margin: 0; color: var(--primary-text); font-size: 1.5rem; }
+.export-button { background-color: var(--primary-accent); color: var(--primary-bg); border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-weight: 600; text-decoration: none; font-size: 0.9rem; transition: background-color 0.2s; }
+.export-button:hover { background-color: var(--primary-accent-hover); }
+
+.table_wrapper {
+    overflow-x: auto;
+}
+
+.data_table {
+    width: 100%;
+    border-collapse: collapse;
+    color: var(--secondary-text);
+}
+
+.data_table th, .data_table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+    white-space: nowrap;
+}
+
+.data_table thead tr {
+    background-color: rgba(0, 208, 156, 0.1);
+}
+.data_table th {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--primary-text);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.data_table tbody tr {
+    transition: background-color 0.2s;
+}
+.data_table tbody tr:hover {
+    background-color: var(--card-bg);
+}
+.data_table td {
+    font-size: 1rem;
+    color: var(--primary-text);
+}
+
+.profit-text { color: var(--primary-accent) !important; }
+.loss-text { color: var(--negative-accent) !important; }
+.side-buy { color: var(--primary-accent) !important; text-transform: uppercase; font-weight: 600; }
+.side-sell { color: var(--negative-accent) !important; text-transform: uppercase; font-weight: 600; }

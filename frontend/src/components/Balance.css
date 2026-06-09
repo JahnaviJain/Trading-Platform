@@ -1,0 +1,217 @@
+/* AddBalancePage.css */
+
+:root {
+  --primary-bg: #0e1a2b;
+  --secondary-bg: #1e1e2f;
+  --primary-text: #ffffff;
+  --secondary-text: #ffffffcc;
+  --primary-accent: #00d09c;
+  --primary-accent-hover: #00b88a;
+  --negative-accent: #f44336;
+  --negative-accent-hover: #d32f2f;
+  --border-color: rgba(0, 208, 156, 0.2);
+  --font-family: 'Segoe UI', 'Roboto', sans-serif;
+}
+
+/* --- Base Layout --- */
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--primary-bg);
+  color: var(--primary-text);
+  font-family: var(--font-family);
+}
+
+/* --- Header --- */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  height: 65px;
+  background-color: var(--secondary-bg);
+  border-bottom: 1px solid var(--border-color);
+  flex-shrink: 0;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--primary-text);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.nav a {
+  text-decoration: none;
+  color: var(--primary-text);
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.nav a:hover {
+  color: var(--primary-accent);
+}
+
+.welcome-message {
+  color: var(--secondary-text);
+  font-weight: 500;
+}
+
+.logout-button {
+  background-color: transparent;
+  color: var(--primary-text);
+  border: 1px solid var(--border-color);
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.logout-button:hover {
+  background-color: var(--primary-accent);
+  border-color: var(--primary-accent);
+}
+
+
+/* --- Main Content --- */
+.main {
+  flex-grow: 1;
+  padding: 40px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main-title {
+  text-align: center;
+  margin-bottom: 32px;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+/* --- Balance Card --- */
+.balance-box {
+  background-color: var(--secondary-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  /* FIX: Reduced padding for a more compact feel */
+  padding: 28px; 
+  width: 100%;
+  /* FIX: Reduced max-width from 500px to make the box narrower */
+  max-width: 420px; 
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.balance-display {
+  text-align: center;
+  font-size: 1.4rem; /* FIX: Slightly smaller font for balance */
+  margin-bottom: 28px; /* FIX: Reduced bottom margin */
+  padding-bottom: 20px; /* FIX: Reduced bottom padding */
+  border-bottom: 1px solid var(--border-color);
+}
+
+.balance-display strong {
+  color: var(--secondary-text);
+  margin-right: 12px;
+  font-weight: 400;
+}
+
+/* --- Balance Form --- */
+.balance-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.balance-form label {
+  margin-bottom: 12px;
+  font-size: 1rem;
+  color: var(--secondary-text);
+}
+
+.balance-form input {
+  padding: 14px;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background-color: var(--primary-bg);
+  color: var(--primary-text);
+  margin-bottom: 24px;
+  transition: all 0.2s ease;
+}
+
+.balance-form input:focus {
+  outline: none;
+  border-color: var(--primary-accent);
+  box-shadow: 0 0 0 3px rgba(0, 208, 156, 0.3);
+}
+
+/* Hide number input arrows */
+.balance-form input::-webkit-outer-spin-button,
+.balance-form input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.balance-form input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.button-group {
+  display: flex;
+  gap: 16px;
+}
+
+/* Responsive buttons */
+@media (max-width: 480px) {
+  .button-group {
+    flex-direction: column;
+  }
+}
+
+.button-group .follow-btn {
+  flex: 1; /* Make buttons share space equally */
+  padding: 14px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.button-group .follow-btn {
+  background-color: var(--primary-accent);
+  color: #0e1a2b; /* Dark text for high contrast */
+}
+
+.button-group .follow-btn:hover {
+  background-color: var(--primary-accent-hover);
+}
+
+.button-group .withdraw-btn {
+  background-color: var(--negative-accent);
+  color: var(--primary-text);
+}
+
+.button-group .withdraw-btn:hover {
+  background-color: var(--negative-accent-hover);
+}
+
+
+/* --- Footer --- */
+.footer {
+  text-align: center;
+  padding: 20px;
+  margin-top: auto;
+  background-color: var(--secondary-bg);
+  border-top: 1px solid var(--border-color);
+  flex-shrink: 0;
+  font-size: 0.9rem;
+}

@@ -1,0 +1,238 @@
+TradePage.css
+
+/* 1. DEFINE THE DARK THEME VARIABLES */
+:root {
+  --primary-bg: #0e1a2b;
+  --secondary-bg: #1a2a44;
+  --card-bg: #1e1e2f;
+  --primary-text: #ffffff;
+  --secondary-text: #a9c1e0;
+  --primary-accent: #00d09c;
+  --primary-accent-hover: #00b88a;
+  --negative-accent: #f44336;
+  --negative-accent-hover: #d32f2f;
+  --border-color: rgba(0, 208, 156, 0.2);
+  --font-family: 'Segoe UI', 'Roboto', sans-serif;
+}
+
+/* 2. GLOBAL STYLES */
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  background-color: var(--primary-bg);
+  color: var(--secondary-text);
+}
+
+/* 3. CORE PAGE LAYOUT */
+/* The main container for the entire page */
+.trade-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensures the container is at least the full height of the screen */
+}
+
+/* Header */
+.trade-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  height: 65px;
+  background-color: var(--secondary-bg);
+  border-bottom: 1px solid var(--border-color);
+  flex-shrink: 0; /* Prevents the header from shrinking */
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 1.5rem;
+  background-color: var(--secondary-bg);
+  border-top: 1px solid var(--border-color);
+  flex-shrink: 0; /* Prevents the footer from shrinking */
+  margin-top: auto; /* Pushes the footer to the bottom if content is short */
+}
+
+/* 4. SEARCH BAR SECTION */
+.search-bar {
+  padding: 1rem 2rem;
+  background-color: var(--primary-bg);
+  border-bottom: 1px solid var(--border-color);
+  flex-shrink: 0; /* Important for layout consistency */
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 12px 16px;
+  background-color: var(--secondary-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--primary-text);
+  font-size: 1rem;
+  box-sizing: border-box; /* Ensures padding doesn't add to the width */
+}
+
+.search-bar input:focus {
+  outline: none;
+  border-color: var(--primary-accent);
+}
+
+/* 5. MAIN CONTENT AREA (Left & Right Panels) */
+.trade-content {
+  display: flex;
+  flex-wrap: wrap; /* Allows sidebar to stack on small screens */
+  gap: 2rem;
+  padding: 2rem; /* Adds space around the main and sidebar sections */
+  width: 100%;
+  max-width: 1800px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  margin-bottom: 2rem; /* <<< FIX: This line creates the gap above the footer */
+}
+
+.main-section {
+  flex: 3;
+  min-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem; /* Creates space between child elements like movers and news */
+}
+
+.sidebar {
+  flex: 1.5;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* 6. COMPONENT-SPECIFIC STYLES */
+/* Main Section Components */
+.main-section h2 {
+  margin: 0;
+  color: var(--primary-text);
+  font-size: 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1rem;
+}
+
+.equities-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1.5rem;
+}
+
+.equity-card {
+  background-color: var(--secondary-bg);
+  padding: 1.5rem 1rem;
+  border-radius: 12px;
+  text-align: center;
+  border: 1px solid var(--border-color);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.equity-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+.equity-card h3 { margin: 0 0 0.5rem; color: var(--primary-text); }
+.equity-card .price { font-size: 1.5rem; font-weight: bold; color: var(--primary-text); margin: 0.5rem 0; }
+.equity-card .change { font-weight: 600; }
+.equity-card .change.up { color: var(--primary-accent); }
+.equity-card .change.down { color: var(--negative-accent); }
+.equity-card .follow-btn {
+  background-color: var(--primary-accent);
+  color: var(--primary-bg);
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-top: 1rem;
+  transition: background-color 0.2s;
+}
+.equity-card .follow-btn:hover { background-color: var(--primary-accent-hover); }
+
+/* Movers & News */
+.market-section, .news-feed {
+  background-color: var(--secondary-bg);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+}
+.market-section { display: flex; gap: 2rem; }
+.gainers, .losers { flex: 1; }
+.gainers h3, .losers h3, .news-feed h3 { margin: 0 0 1rem; color: var(--primary-text); }
+.gainers ul, .losers ul, .news-feed ul { list-style: none; padding: 0; margin: 0; }
+.gainers li, .losers li, .news-feed li { padding: 0.5rem 0; border-bottom: 1px solid var(--border-color); }
+.gainers li:last-child, .losers li:last-child, .news-feed li:last-child { border-bottom: none; }
+.losers span, .gainers span { font-weight: 600; }
+.gainers li { color: var(--primary-accent); }
+.losers li { color: var(--negative-accent); }
+.news-feed a { color: var(--secondary-text); text-decoration: none; transition: color 0.2s; }
+.news-feed a:hover { color: var(--primary-accent); }
+
+/* Sidebar Widgets */
+.market-status-widget, .chatbot-widget {
+  background-color: var(--secondary-bg);
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid var(--border-color);
+}
+.market-status-widget h3, .chatbot-widget h3 {
+  margin: 0 0 1rem;
+  color: var(--primary-text);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1rem;
+}
+.status-indicator { display: flex; align-items: center; gap: 10px; font-size: 1.1rem; }
+.status-dot { width: 12px; height: 12px; border-radius: 50%; }
+.status-indicator.open .status-dot { background-color: var(--primary-accent); }
+.status-indicator.closed .status-dot { background-color: var(--negative-accent); }
+.status-detail { font-size: 0.9rem; margin-top: 0.5rem; }
+
+/* Chatbot */
+.chat-messages { height: 250px; overflow-y: auto; margin-bottom: 1rem; }
+.chat-msg { padding: 8px 12px; border-radius: 8px; margin-bottom: 8px; max-width: 85%; line-height: 1.4; }
+.chat-msg.user { background-color: var(--primary-accent); color: var(--primary-bg); align-self: flex-end; margin-left: auto; }
+.chat-msg.bot { background-color: var(--card-bg); color: var(--primary-text); align-self: flex-start; }
+.chat-input { display: flex; }
+.chat-input input { flex-grow: 1; background-color: var(--primary-bg); border: 1px solid var(--border-color); border-radius: 6px 0 0 6px; padding: 10px; color: var(--primary-text); }
+.chat-input input:focus { outline: none; border-color: var(--primary-accent); }
+.chat-input button {
+  background-color: var(--primary-accent);
+  border: none;
+  color: var(--primary-bg);
+  padding: 0 16px;
+  border-radius: 0 6px 6px 0;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+
+.equity-card .watchlist-btn {
+  background-color: transparent;
+  color: var(--secondary-text);
+  border: 1px solid var(--border-color);
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1;
+  margin-left: 8px; /* Space between trade and watch buttons */
+  vertical-align: middle;
+  transition: all 0.2s ease-in-out;
+}
+
+.equity-card .watchlist-btn:hover {
+  color: var(--primary-accent);
+  border-color: var(--primary-accent);
+}
+
+.equity-card .watchlist-btn.watched {
+  color: gold;
+  border-color: gold;
+}
+
+.equity-card .watchlist-btn.watched:hover {
+  background-color: rgba(255, 215, 0, 0.1);
+}
